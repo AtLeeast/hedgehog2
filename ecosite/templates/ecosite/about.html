@@ -1,0 +1,136 @@
+{% extends 'ecosite/base.html' %}
+
+{% block title %}Hedgehog - О нас{% endblock %}
+
+{% block custom_styles %}
+<link href="../static/css/carousel.css" rel="stylesheet">
+<link href="../static/css/headers.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<main>
+    <div class="container">
+        <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+            <div class="col-md-3 mb-2 mb-md-0">
+                <a href="{% url 'ecosite:index' %}" class="d-inline-flex link-body-emphasis text-decoration-none">
+                    <img src="../../static/FullLogo.png" width="50%" height="50%" role="img"/>
+                </a>
+            </div>
+            <ul class="nav col-12 col-md-auto mb-2 mb-md-0">
+                <li><a href="{% url 'ecosite:index' %}" class="nav-link px-2">Главная</a></li>
+                <li><a href="{% url 'ecosite:statistics' %}" class="nav-link px-2">Статистика</a></li>
+                <li><a href="{% url 'ecosite:about' %}" class="nav-link px-2 link-secondary">О нас</a></li>
+            </ul>
+            <div class="col-md-3 text-end">
+              {% if not authorized %}
+                <a href="{% url 'ecosite:login' %}">
+                    <button type="button" class="btn btn-primary">Войти</button>
+                </a>
+              {% else %}
+                <ul class="nav col-12 mb-2 mb-md-0 col-md-auto justify-content-end">
+                    <li class="text-center d-flex align-items-center"><a href="{% url 'ecosite:profile' %}" class="nav-link px-2">{{ email }}</a></li>
+                    <li class="text-center d-flex align-items-center"><a class="nav-link px-2"><button type="submit" class="btn btn-primary" onclick="quit()">Выйти</button></a></li>
+                </ul>
+              {% endif %}
+            </div>
+        </header>
+    </div>
+</main>
+<body>
+  <main>
+
+  <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><image width="100%" height="100%" xlink:href="../../static/FirstSlide.jpg"></svg>
+        <div class="container">
+          <div class="carousel-caption">
+            <h1>Сделаем Алматы лучше!</h1>
+            <!-- <p>Some representative placeholder content for the first slide of the carousel.</p> -->
+            <!-- <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p> -->
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><image width="100%" height="100%" xlink:href="../../static/SecondSlide.jpg"></svg>
+        <div class="container">
+          <div class="carousel-caption">
+            <h1>Только мы!</h1>
+            <!-- <p>Some representative placeholder content for the second slide of the carousel.</p> -->
+            <!-- <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p> -->
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><image width="100%" height="100%" xlink:href="../../static/ThirdSlide.jpg"></svg>
+        <div class="container">
+          <div class="carousel-caption">
+            <h1>Вместе!</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+
+  <!-- Marketing messaging and featurettes
+  ================================================== -->
+  <!-- Wrap the rest of the page in another container to center all the content. -->
+
+  <div class="container marketing">
+
+    <!-- START THE FEATURETTES -->
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading fw-normal lh-1">Забота о природе и удобство навигации в одном месте.</h2>
+      </div>
+      <div class="col-md-5">
+        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><image width="100%" height="100%" xlink:href="../../static/FirstHeader.svg"></svg>
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7 order-md-2">
+        <h2 class="featurette-heading fw-normal lh-1">Принципы экологической переработки</h2>
+      </div>
+      <div class="col-md-5 order-md-1">
+        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><image width="100%" height="100%" xlink:href="../../static/SecondHeader.svg"></svg>
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading fw-normal lh-1">Уникальная возможность помочь городу</h2>
+      </div>
+      <div class="col-md-5">
+        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><image width="100%" height="100%" xlink:href="../../static/ThirdHeader.svg"></image></svg>
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+    </div>
+{% endblock %}
+
+{% block custom_scripts %}
+<script type="text/javascript" src="../static/js/auth/quit.js"></script>
+{% endblock %}

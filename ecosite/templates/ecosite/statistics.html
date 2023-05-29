@@ -1,0 +1,68 @@
+{% extends 'ecosite/base.html' %}
+
+{% block title %}Hedgehog - Статистика{% endblock %}
+
+{% block custom_styles %}
+<link href="../static/css/headers.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<main>
+  <div class="container">
+      <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+          <div class="col-md-3 mb-2 mb-md-0">
+              <a href="{% url 'ecosite:index' %}" class="d-inline-flex link-body-emphasis text-decoration-none">
+                  <img src="../../static/FullLogo.png" width="50%" height="50%" role="img"/>
+              </a>
+          </div>
+          <ul class="nav col-12 col-md-auto mb-2 mb-md-0">
+              <li><a href="{% url 'ecosite:index' %}" class="nav-link px-2">Главная</a></li>
+              <li><a href="{% url 'ecosite:statistics' %}" class="nav-link px-2">Статистика</a></li>
+              <li><a href="{% url 'ecosite:about' %}" class="nav-link px-2 link-secondary">О нас</a></li>
+          </ul>
+          <div class="col-md-3 text-end">
+            {% if not authorized %}
+              <a href="{% url 'ecosite:login' %}">
+                  <button type="button" class="btn btn-primary">Войти</button>
+              </a>
+            {% else %}
+              <ul class="nav col-12 mb-2 mb-md-0 col-md-auto justify-content-end">
+                  <li class="text-center d-flex align-items-center"><a href="{% url 'ecosite:profile' %}" class="nav-link px-2">{{ email }}</a></li>
+                  <li class="text-center d-flex align-items-center"><a class="nav-link px-2"><button type="submit" class="btn btn-primary" onclick="quit()">Выйти</button></a></li>
+              </ul>
+            {% endif %}
+          </div>
+      </header>
+  </div>
+</main>
+
+<div>
+  <canvas id="myChart"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  const ctx = document.getElementById('myChart');
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      datasets: [{
+        label: '# of Votes',
+        data: [12, 19, 3, 5, 2, 3],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
+
+{% endblock %}

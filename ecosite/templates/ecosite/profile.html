@@ -1,0 +1,90 @@
+{% extends 'ecosite/base.html' %}
+
+{% block title %}Hedgehog - Профиль{% endblock %}
+
+{% block custom_styles %}
+<link href="../static/css/headers.css" rel="stylesheet">
+<link href="../static/css/style.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<main>
+    <div class="container">
+        <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+            <div class="col-md-3 mb-2 mb-md-0">
+                <a href="{% url 'ecosite:index' %}" class="d-inline-flex link-body-emphasis text-decoration-none">
+                    <img src="../../static/FullLogo.png" width="50%" height="50%" role="img"/>
+                </a>
+            </div>
+            <ul class="nav col-12 col-md-auto mb-2 mb-md-0">
+                <li><a href="{% url 'ecosite:index' %}" class="nav-link px-2">Главная</a></li>
+                <li><a href="{% url 'ecosite:statistics' %}" class="nav-link px-2">Статистика</a></li>
+                <li><a href="{% url 'ecosite:about' %}" class="nav-link px-2 link-secondary">О нас</a></li>
+            </ul>
+            <div class="col-md-3 text-end">
+              {% if not authorized %}
+                <a href="{% url 'ecosite:login' %}">
+                    <button type="button" class="btn btn-primary">Войти</button>
+                </a>
+              {% else %}
+                <ul class="nav col-12 mb-2 mb-md-0 col-md-auto justify-content-end">
+                    <li class="text-center d-flex align-items-center"><a href="{% url 'ecosite:profile' %}" class="nav-link px-2">{{ email }}</a></li>
+                    <li class="text-center d-flex align-items-center"><a class="nav-link px-2"><button type="submit" class="btn btn-primary" onclick="quit()">Выйти</button></a></li>
+                </ul>
+              {% endif %}
+            </div>
+        </header>
+    </div>
+</main>
+<header class="ScriptHeader">
+    <div class="container">
+    	<div class="rt-12">
+        	<div class="heading">
+            	<h1>Профиль</h1>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section>
+    <div class="rt-container">
+          <div class="col-rt-12">
+              <div class="Scriptcontent">
+              
+<!-- Student Profile -->
+<div class="student-profile py-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="card shadow-sm">
+          <div class="card-header bg-transparent text-center">
+            <h3>{{ email }}</h3>
+          </div>
+          <div class="card-body">
+            <p class="mb-0"><strong class="pr-1">Город заданий:</strong>Алматы</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <div class="card shadow-sm">
+          <div class="card-header bg-transparent border-0">
+            <h3 class="mb-0"><i class="far fa-clone pr-1"></i> <br>Бутылок собрано за сегодня: </h3>
+          </div>
+          <div class="card-body pt-0">
+            <table class="table table-bordered">
+            </table>
+          </div>
+        </div>
+      </div>
+      <h3>
+        Button for bottles
+      </h3>
+    </div>
+  </div>
+</div>
+    		</div>
+		</div>
+    </div>
+</section>
+{% endblock %}

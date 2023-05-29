@@ -1,0 +1,8 @@
+.sign_up {
+    color: red;
+}
+
+.sign_up:hover {
+    color:black;
+    cursor: pointer;
+}

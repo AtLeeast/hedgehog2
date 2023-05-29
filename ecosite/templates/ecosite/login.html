@@ -1,0 +1,35 @@
+{% extends 'ecosite/base.html' %}
+
+{% block title %}Hedgehog - Вход{% endblock %}
+
+{% block custom_styles %}
+<link href="../../static/css/sign-in.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<main class="form-signin w-100 m-auto">
+  <form>
+    <img class="mb-4" src="../../static/FullLogo.png" alt="" width="100%" height="100%">
+    <h1 class="h3 mb-3 fw-normal">Вход</h1>
+    <p class="mb-3">Еще не зарегистрировались? Тогда вам <a href="{% url 'ecosite:registration' %}">сюда</a></p>
+  </form>
+  <form>
+    <div class="form-floating">
+      <input type="email" class="form-control email-input" id="floatingInput" placeholder="name@example.com">
+      <label for="floatingInput">Адрес электронной почты</label>
+    </div>
+  </form>
+  <form>
+    <div class="form-floating">
+      <input type="password" class="form-control password-input" id="floatingPassword" placeholder="Password">
+      <label for="floatingPassword">Пароль</label>
+    </div>
+  </form>
+    <button class="w-100 btn btn-lg btn-primary" type="submit" onclick="signin()">Войти</button>
+  </form>
+</main>
+{% endblock %}
+
+{% block custom_scripts %}
+<script type="text/javascript" src="../../static/js/auth/signin.js"></script>
+{% endblock %}
